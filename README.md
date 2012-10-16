@@ -3,7 +3,7 @@
 La classe tinyImage permet de simplement gérer l'upload d'une image ainsi que son redimensionnement.
 Elle a été conçu pour avoir une API la plus simple possible mais offrant une grande souplesse dans son utilisation.
 
-Elle est basé sur la classe upload de Colin Verot : http://www.verot.net et est sous licence GNU en version 2.
+Elle est basé sur la classe upload de Colin Verot : http://www.verot.net et est sous licence GNU GPL en version 2.
 
 
 ##Initialisation
