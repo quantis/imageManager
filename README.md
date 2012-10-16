@@ -32,6 +32,27 @@ Vous êtes à présent en situation pour commencer à utiliser la classe TinyIma
 
 ##Utilisation
 
+###Exemple
+
+```php
+<?php 
+
+ //instanciate object
+  $imageObject = new tinyImage
+  
+  //image upload
+  $imageUniqueId = $imageObject->upload($_FILE['myImage']);
+
+  //get image with size of 150x150
+  $imageURI = $imageObject->get($imageUniqueId, 150, 150);
+  
+  /**
+   * DISPLAY RESIZED IMAGE
+   */
+  
+  echo '<img src="'.$imageURI.'" alt="some randome image" />';
+```
+
 ###Téléversement d'une image
 La librairie TinyImage dispose de deux méthodes pour ajouter des images dans son système  : 
 * `add()` 
@@ -45,10 +66,10 @@ Elles s'utilisent de la façon suivante :
   $imageObject = new tinyImage
   
   //image upload
-  $imageName = $imageObject->upload($_FILE['myImage']);
+  $imageUniqueId = $imageObject->upload($_FILE['myImage']);
     
   //image add from another location
-  $imageName = $imageObject->add('/path/to/image/image.jpg');
+  $$imageUniqueId = $imageObject->add('/path/to/image/image.jpg');
   
   //you MUST BE save the return of add or upload methods, the imageName is required to get image's URI
 
