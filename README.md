@@ -147,6 +147,40 @@ Exemple d'utilisation :
 
 ```
 
+###Utilisation dans CodeIgniter
+Pour intégrer `tinyImage`au sein de codeIgniter il faut placer les classes dans le repertoire `application/libraries`. Puis renommer le fichier `tinyImage.php` en `tinyimage_library.php` et modifier le nom de la classe de `tinyImage` en `tinyimage_library`, comme ceci : 
+
+```php
+<?php
+class tinyimage_library {
+
+}
+```
+
+Je vous conseille aussi la configuration suivante (à placer dans le constructeur) :
+
+```php
+<?php
+  //in __construct method :
+  $this->imageRootPath = FCPATH . DS. 'upload' . DS . 'images' . DS;
+  $this->imageRootURI = site_url() . 'upload/images/';
+```
+
+Elle devient alors accessible via le mécanisme classique de chargement des librairies au sein de codeIgniter : 
+```php
+<?php
+//get the image's library :
+$this->load->model('tinyimage_library');
+
+//use :
+$this->tinyimage_library->get('imageId');
+```
+
+-----
+
+Si vous trouvez des bugs ou coquilles dans la classe ou sa documentation n'hésitez pas à me contacter via gitHub.
+
+
 ##Attributs
 ```php
   <?php
@@ -236,36 +270,3 @@ Exemple d'utilisation :
     
   }
 ```
-
-###CodeIgniter
-Pour intégrer `tinyImage`au sein de codeIgniter il faut placer les classes dans le repertoire `application/libraries`. Puis renommer le fichier `tinyImage.php` en `tinyimage_library.php` et modifier le nom de la classe de `tinyImage` en `tinyimage_library`, comme ceci : 
-
-```php
-<?php
-class tinyimage_library {
-
-}
-```
-
-Je vous conseille aussi la configuration suivante (à placer dans le constructeur) :
-
-```php
-<?php
-  //in __construct method :
-  $this->imageRootPath = FCPATH . DS. 'upload' . DS . 'images' . DS;
-  $this->imageRootURI = site_url() . 'upload/images/';
-```
-
-Elle devient alors accessible via le mécanisme classique de chargement des librairies au sein de codeIgniter : 
-```php
-<?php
-//get the image's library :
-$this->load->model('tinyimage_library');
-
-//use :
-$this->tinyimage_library->get('imageId');
-```
-
------
-
-Si vous trouvez des bugs ou coquilles dans la classe ou sa documentation n'hésitez pas à me contacter via gitHub.
