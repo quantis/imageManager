@@ -185,7 +185,7 @@ _Si vous trouvez des bugs ou coquilles dans la classe ou sa documentation n'hés
 ```php
   <?php
   
-  class enicImage
+  class tinyImage
   {
   
     /**
@@ -226,7 +226,7 @@ _Si vous trouvez des bugs ou coquilles dans la classe ou sa documentation n'hés
 ```php
   <?php
   
-  class enicImage
+  class tinyImage
   {
     
     /**
