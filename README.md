@@ -33,7 +33,7 @@ Vous êtes à présent en situation pour commencer à utiliser la classe TinyIma
 ##Utilisation
 
 ###Téléversement d'une image
-La librairie enicImage dispose de deux méthodes pour ajouter des images dans son système  : 
+La librairie TinyImage dispose de deux méthodes pour ajouter des images dans son système  : 
 * `add()` 
 * `upload()` 
 
@@ -41,11 +41,8 @@ Elles s'utilisent de la façon suivante :
 ```php
 <?php
 
-  //load enicImage class
-  enic::to_load('image');
-  
-  //Instanciate class
-  $imageObject = new enicImage();
+  //instanciate object
+  $imageObject = new tinyImage
   
   //image upload
   $imageName = $imageObject->upload($_FILE['myImage']);
@@ -62,10 +59,10 @@ Cet identifiant est requis pour pouvoir procéder aux traitements sur l'image en
 ------
 
 ###Traitement et affichage d'une image
-Une fois l'image chargée, elle est stockée au sein d'école numérique, il est alors possible de redimensionner l'image selon différentes stratégies.
+Une fois l'image chargée, elle est stockée au sein du repertoire que vous avez spécifié lors de la mise en place de la classe, il est alors possible de redimensionner l'image selon différentes stratégies.
 
 ####Stratégies de redimensionnement
-EnicImage redimensionne les images selon trois grandes stratégies (les redimensionnements effectués au sein d'enicImage conservent systématiquement les proportions) :
+TinyImage redimensionne les images selon trois grandes stratégies (les redimensionnements effectués au sein d'enicImage conservent systématiquement les proportions) :
 
 * Stratégie par défaut : L'image est redimensionnée en fonction du plus grand coté par rapport au paramètres de redimensionnement, le coté restant est calculé en fonction des proportions.
 * Stratégie crop : L'image est redimensionnée pour respecter la hauteur et la largeur spécifiée, les parties de l'image qui sont hors du cadre sont supprimées.
@@ -79,12 +76,9 @@ EnicImage redimensionne les images selon trois grandes stratégies (les redimens
 
 ```php
 <?php
-
-  //load enicImage class
-  enic::to_load('image');
   
   //Instanciate class
-  $imageObject = new enicImage();
+  $imageObject = new tinyImage();
   
   /**
    * USAGES
@@ -123,11 +117,8 @@ Il est aussi possible de récuperer l'image d'origine (sans aucun traitement) vi
 ```php
 <?php
 
-  //load enicImage class
-  enic::to_load('image');
-  
   //Instanciate class
-  $imageObject = new enicImage();
+  $imageObject = new tinyImage();
   
   //get original image
   $imageURI = $imageObject->getOriginal('imageUniqueId');
@@ -140,19 +131,16 @@ Il est aussi possible de récuperer l'image d'origine (sans aucun traitement) vi
 -----
 
 ###Suppression d'une image
-EnicImage propose une méthode pour supprimer une image : `delete()`.
+TinyImage propose une méthode pour supprimer une image : `delete()`.
 
 **ATTENTION** : La suppression d'une image entraine la suppression de l'ensemble des images redimensionnées liées.
 
 Exemple d'utilisation :
 ```php
 <?php
-
-  //load enicImage class
-  enic::to_load('image');
   
   //Instanciate class
-  $imageObject = new enicImage();
+  $imageObject = new tinyImage();
   
   //delete image
   $imageObject->delete('imageUniqueId');
@@ -248,3 +236,36 @@ Exemple d'utilisation :
     
   }
 ```
+
+###CodeIgniter
+Pour intégrer `tinyImage`au sein de codeIgniter il faut placer les classes dans le repertoire `application/libraries`. Puis renommer le fichier `tinyImage.php` en `tinyimage_library.php` et modifier le nom de la classe de `tinyImage` en `tinyimage_library`, comme ceci : 
+
+```php
+<?php
+class tinyimage_library {
+
+}
+```
+
+Je vous conseille aussi la configuration suivante (à placer dans le constructeur) :
+
+```php
+<?php
+  //in __construct method :
+  $this->imageRootPath = FCPATH . DS. 'upload' . DS . 'images' . DS;
+  $this->imageRootURI = site_url() . 'upload/images/';
+```
+
+Elle devient alors accessible via le mécanisme classique de chargement des librairies au sein de codeIgniter : 
+```php
+<?php
+//get the image's library :
+$this->load->model('tinyimage_library');
+
+//use :
+$this->tinyimage_library->get('imageId');
+```
+
+-----
+
+Si vous trouvez des bugs ou coquilles dans la classe ou sa documentation n'hésitez pas à me contacter via gitHub.
