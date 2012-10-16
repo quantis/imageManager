@@ -178,7 +178,7 @@ $this->tinyimage_library->get('imageId');
 
 -----
 
-Si vous trouvez des bugs ou coquilles dans la classe ou sa documentation n'hésitez pas à me contacter via gitHub.
+_Si vous trouvez des bugs ou coquilles dans la classe ou sa documentation n'hésitez pas à me contacter via gitHub._
 
 
 ##Attributs
