@@ -5,6 +5,7 @@ Elle a été conçu pour avoir une API la plus simple possible mais offrant une 
 
 Elle est basé sur la classe upload de Colin Verot : http://www.verot.net et est sous licence GNU GPL en version 2.
 
+Elle a été originalement conçu pour le projet Iconito Ecole Numerique, un ENT à destination du primaire (www.iconito.fr), édité par la société Cap-Tic : www.cap-tic.fr
 
 ##Initialisation
 
