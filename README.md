@@ -170,11 +170,11 @@ Exemple d'utilisation :
 ```
 
 ###Utilisation dans CodeIgniter
-Pour intégrer `tinyImage`au sein de codeIgniter il faut placer les classes dans le repertoire `application/libraries`. Puis renommer le fichier `tinyImage.php` en `tinyimage_library.php` et modifier le nom de la classe de `tinyImage` en `tinyimage_library`, comme ceci : 
+Pour intégrer `tinyImage`au sein de codeIgniter il faut placer les classes dans le repertoire `application/libraries`. Puis renommer le fichier `tinyImage.php` en `TinyImage.php` et modifier le nom de la classe de `tinyImage` en `TinyImage`, comme ceci : 
 
 ```php
 <?php
-class tinyimage_library {
+class TinyImage {
 
 }
 ```
@@ -192,10 +192,10 @@ Elle devient alors accessible via le mécanisme classique de chargement des libr
 ```php
 <?php
 //get the image's library :
-$this->load->library('tinyimage_library');
+$this->load->library('TinyImage');
 
 //use :
-$this->tinyimage_library->get('imageId');
+$this->tinyimage->get('imageId');
 ```
 
 -----
