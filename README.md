@@ -5,7 +5,7 @@ Elle a été conçu pour avoir une API la plus simple possible mais offrant une 
 
 Elle est basé sur la classe upload de Colin Verot : http://www.verot.net et est sous licence GNU GPL en version 2.
 
-Elle a originellement été créée pour le projet Iconito Ecole Numerique, un ENT à destination du primaire (www.iconito.fr), édité par la société Cap-Tic : www.cap-tic.fr
+Elle a originellement été créée pour le projet Iconito [[Ecole Numerique|www.iconito.fr]] un ENT à destination du primaire, édité par la société [[Cap-Tic|www.cap-tic.fr]]
 
 ##Initialisation
 
@@ -84,7 +84,7 @@ Cet identifiant est requis pour pouvoir procéder aux traitements sur l'image en
 Une fois l'image chargée, elle est stockée au sein du repertoire que vous avez spécifié lors de la mise en place de la classe, il est alors possible de redimensionner l'image selon différentes stratégies.
 
 ####Stratégies de redimensionnement
-TinyImage redimensionne les images selon trois grandes stratégies (les redimensionnements effectués au sein d'enicImage conservent systématiquement les proportions) :
+TinyImage redimensionne les images selon trois grandes stratégies (les redimensionnements effectués au sein de `TinyImage` conservent systématiquement les proportions) :
 
 * Stratégie par défaut : L'image est redimensionnée en fonction du plus grand coté par rapport au paramètres de redimensionnement, le coté restant est calculé en fonction des proportions.
 * Stratégie crop : L'image est redimensionnée pour respecter la hauteur et la largeur spécifiée, les parties de l'image qui sont hors du cadre sont supprimées.
@@ -192,7 +192,7 @@ Elle devient alors accessible via le mécanisme classique de chargement des libr
 ```php
 <?php
 //get the image's library :
-$this->load->model('tinyimage_library');
+$this->load->library('tinyimage_library');
 
 //use :
 $this->tinyimage_library->get('imageId');
@@ -200,7 +200,7 @@ $this->tinyimage_library->get('imageId');
 
 -----
 
-_Si vous trouvez des bugs ou coquilles dans la classe ou sa documentation n'hésitez pas à me contacter via gitHub._
+_Si vous trouvez des bugs ou coquilles dans la classe ou sa documentation n'hésitez pas à me contacter via gitHub ou tiwtter (@lilobase)._
 
 
 ##Attributs
@@ -259,7 +259,7 @@ _Si vous trouvez des bugs ou coquilles dans la classe ou sa documentation n'hés
     public function upload($pathToFile){}
     
     /**
-     * Save an image in enicImage's files repository
+     * Save an image in tinyImage files repository
      * @param string $pathToFile path to the image to save
      * @param boolean $keep_original_image keep the original image (default value: true)
      * @return string image unique id
