@@ -1,4 +1,7 @@
 <?php
+namespace tinyLib\media\imageManager;
+
+use tinyLib\media\imageManager\externalImageUpload as externalImageUpload;
 
 //load dependency
 include ('upload.php');
