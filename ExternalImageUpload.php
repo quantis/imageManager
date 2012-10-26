@@ -1,5 +1,5 @@
 <?php
-namespace quantis\media\imageManager;
+namespace Quantis\Media\ImageManager;
 
 // +------------------------------------------------------------------------+
 // | class.upload.php                                                       |

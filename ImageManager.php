@@ -1,8 +1,8 @@
 <?php
 
-namespace quantis\media\imageManager;
+namespace Quantis\Media\ImageManager;
 
-use quantis\media\imageManager\externalImageUpload as externalImageUpload;
+use Quantis\Media\ImageManager\externalImageUpload as externalImageUpload;
 
 //load dependency
 include ('upload.php');
@@ -18,7 +18,7 @@ define('DS', DIRECTORY_SEPARATOR);
  * Respect the KISS moto
  * @author Arnaud LEMAIRE <a.lemaire@quantis.fr>
  */
-class tinyImage
+class ImageManager
 {
 
     protected $imageRootPath;
