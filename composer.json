@@ -1,5 +1,5 @@
 {
-    "name": "tinyLib/imageManager",
+    "name": "quantis/imageManager",
     "type": "library",
     "description": "A kiss, really simple way to manage image.",
     "keywords": ["image","picture", "upload", "resize"],

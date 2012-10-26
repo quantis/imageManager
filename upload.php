@@ -1,5 +1,5 @@
 <?php
-namespace tinyLib\media\imageManager;
+namespace quantis\media\imageManager;
 
 // +------------------------------------------------------------------------+
 // | class.upload.php                                                       |

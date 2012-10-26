@@ -1,24 +1,25 @@
 <?php
-namespace tinyLib\media\imageManager;
 
-use tinyLib\media\imageManager\externalImageUpload as externalImageUpload;
+namespace quantis\media\imageManager;
+
+use quantis\media\imageManager\externalImageUpload as externalImageUpload;
 
 //load dependency
 include ('upload.php');
 
 //alias for DIRECTORY_SEPARATOR
-if(!defined('DS'));
-    define('DS', DIRECTORY_SEPARATOR);
-    
+if (!defined('DS'))
+    ;
+define('DS', DIRECTORY_SEPARATOR);
+
 /**
  * Upload and Image manipulation class 
  * Based on the upload class of Colin Verot (http://www.verot.net).
  * Respect the KISS moto
  * @author Arnaud LEMAIRE <a.lemaire@quantis.fr>
  */
-
-class tinyImage {
-
+class tinyImage
+{
 
     protected $imageRootPath;
     protected $imageRootURI;
@@ -31,22 +32,23 @@ class tinyImage {
     /**
      * @return void
      */
-    public function __construct() {
+    public function __construct()
+    {
 
         /*
          * CONFIG :
          * Indicate root path to move uploaded pictures and the associate URL.
          */
-        
-       $this->imageRootPath = DS . 'upload' . DS . 'images' . DS;
-       $this->imageRootURI = '/upload/images/';
 
-       
+        $this->imageRootPath = DS . 'upload' . DS . 'images' . DS;
+        $this->imageRootURI = '/upload/images/';
+
+
         //initialization : make root directory
         if (!file_exists($this->imageRootPath)) {
             mkdir($this->imageRootPath, 0770, true);
         }
-        
+
         //array of default value :
         $this->defaultAttributes = array(
             'height' => $this->height,
@@ -55,10 +57,9 @@ class tinyImage {
             'crop' => $this->crop,
             'fill' => $this->fill
         );
-        
+
         return $this;
     }
-
 
     /**
      * Add an image into tinyImage repository
@@ -67,7 +68,8 @@ class tinyImage {
      * @return string image's identifier
      * @throws Exception
      */
-    public function add($pathToFile, $keep_original_image = true) {
+    public function add($pathToFile, $keep_original_image = true)
+    {
 
         $imageClass = new externalImageUpload($pathToFile);
 
@@ -90,7 +92,8 @@ class tinyImage {
      * @param array $pathToFile $_FILE['image_name']
      * @return string image's id
      */
-    public function upload($pathToFile) {
+    public function upload($pathToFile)
+    {
 
         return $this->add($pathToFile, false);
     }
@@ -101,41 +104,41 @@ class tinyImage {
      * @return string URI to the original image's file
      * @throws Exception
      */
-    public function getOriginal($imageOriginalName) {
+    public function getOriginal($imageOriginalName)
+    {
 
         $originalFileName = str_replace('|', '.', $imageOriginalName);
-        
+
         $imageFilePath = $this->getImageDirectory($originalFileName);
-        
+
         if (!file_exists($imageFilePath . $originalFileName)) {
             throw new Exception('Original image not found');
         }
-        
+
         return $this->getURI($originalFileName);
-       
     }
-    
+
     /**
      * Delete image in all of these sizes
      * @param string $imageOriginalName image's id
      * @return true
      */
-    public function delete($imageOriginalName){
-        
+    public function delete($imageOriginalName)
+    {
+
         $originalFileName = explode('|', $imageOriginalName);
-        
+
         $imageFilePath = $this->getImageDirectory($originalFileName[0]);
-        
-        $images = glob($imageFilePath.$originalFileName[0].'*');
-        
-        foreach($images as $image){
+
+        $images = glob($imageFilePath . $originalFileName[0] . '*');
+
+        foreach ($images as $image) {
             unlink($image);
         }
-        
+
         return true;
-        
     }
-    
+
     /**
      * Get an image at a specified size
      * @param string $imageOriginalName image's id
@@ -145,7 +148,8 @@ class tinyImage {
      * @return string image's URI
      * @throws Exception
      */
-    public function get($imageOriginalName, $size_x = 0, $size_y = 0, $options = array()) {
+    public function get($imageOriginalName, $size_x = 0, $size_y = 0, $options = array())
+    {
 
         $this->setSize($size_x, $size_y, $options);
 
@@ -201,19 +205,20 @@ class tinyImage {
         if (!$imageClass->processed) {
             throw new Exception('Error occured in upload process');
         }
-        
+
         //reset to default property
         $this->reset();
-        
+
         return $this->getURI($imageClass->file_dst_name);
     }
 
-     /**
+    /**
      * 
      * @param string $imageName image's id
      * @return string
      */
-    protected function getImageDirectory($imageName) {
+    protected function getImageDirectory($imageName)
+    {
 
         $subDirectory = mb_substr($imageName, 0, 2);
 
@@ -225,8 +230,9 @@ class tinyImage {
 
         return $path;
     }
-    
-    protected function setSize($size_x, $size_y, $options = 'auto') {
+
+    protected function setSize($size_x, $size_y, $options = 'auto')
+    {
 
         //check arguments' integrity
         $check_args = function($arg) {
@@ -262,7 +268,8 @@ class tinyImage {
         }
     }
 
-    protected function getURI($imageName) {
+    protected function getURI($imageName)
+    {
 
         $subPath = substr($imageName, 0, 2);
 
@@ -271,7 +278,8 @@ class tinyImage {
         return $enicImageURI . $imageName;
     }
 
-    protected function getImageFileName($image_name_body, $ext = true) {
+    protected function getImageFileName($image_name_body, $ext = true)
+    {
 
         $image_file = explode('|', $image_name_body);
 
@@ -294,17 +302,16 @@ class tinyImage {
 
         return $image_name;
     }
-    
-    protected function reset(){
-        
+
+    protected function reset()
+    {
+
         //reset to default value
-        foreach($this->defaultAttributes as $attr => $value){
+        foreach ($this->defaultAttributes as $attr => $value) {
             $this->$attr = $value;
         }
-        
     }
 
 }
-
 
 ?>
