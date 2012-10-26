@@ -576,7 +576,7 @@ namespace Quantis\Media\ImageManager;
  * @package   cmf
  * @subpackage external
  */
-class externalImageUpload {
+class ExternalImageUpload {
 
 
     /**
