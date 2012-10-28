@@ -3,7 +3,7 @@
     "type": "library",
     "description": "A kiss, really simple way to manage image.",
     "keywords": ["image","picture", "upload", "resize"],
-    "homepage": "https://github.com/tinyLib/imageManager",
+    "homepage": "https://github.com/quantis/imageManager",
     "license": "GNU GPL v2",
     "authors": [
         {
